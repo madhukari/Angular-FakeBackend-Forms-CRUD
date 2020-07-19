@@ -1,0 +1,71 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" appMatchPassword novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+       <label for="firstName">First Name</label>
+       <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+       <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+       <label for="lastName">Last Name</label>
+       <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+       <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+    </div>
+    <div class="form-group">
+       <p>Please select your gender:</p>
+       	<div class="custom-control custom-radio">
+         <input id="male" type="radio" class="custom-control-input" value="male" name="gender" [(ngModel)]="model.gender" required>
+  <label class="custom-control-label" for="male">Male</label>
+</div>
+
+<div class="custom-control custom-radio">
+  <input id="female" type="radio" class="custom-control-input" value="female" name="gender" [(ngModel)]="model.gender" required>
+  <label class="custom-control-label" for="female">Female</label>
+</div>
+    </div>
+    <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+       <label for="email">Email</label>
+       <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #username="ngModel" required />
+       <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+    </div> -->
+    <div class="form-group">
+       <label>Password</label>
+       <input type="password" class="form-control" [(ngModel)]="model.password" name="password"
+       #password="ngModel" appPasswordPattern required>
+       <span class="text-danger"
+          *ngIf="(password.touched || f.submitted) && password.errors?.required">
+       Password is required
+       </span>
+       <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+       Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+       letter and 1 number
+       </span>
+    </div>
+    <div class="form-group">
+       <label>Confirm Password</label>
+       <input type="password" class="form-control" [(ngModel)]="model.confirmPassword"
+       name="confirmPassword" #confirmPassword="ngModel" required>
+       <span class="text-danger"
+          *ngIf="(confirmPassword.touched || f.submitted) && confirmPassword.errors?.required">
+       Confirm Password is required
+       </span>
+       <span class="text-danger"
+          *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">
+       Passwords doesnot match
+       </span>
+    </div>
+    <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !mobileNumber.valid }">
+       <label for="mobileNumber">Mobile Number</label>
+       <input name="mobileNumber" id="mobileNumber"  type="number" class="form-control" [(ngModel)]="model.mobileNumber" #mobileNumber="ngModel" required>
+       <div *ngIf="f.mobileNumber.touched && f.mobileNumber.invalid" class="alert alert-danger">
+          <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required.</div>
+          <div *ngIf="f.mobileNumber.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+       </div>
+    </div> -->
+    <div class="form-group">
+       <button [disabled]="loading" class="btn btn-primary">Register</button>
+       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+       <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+    </form>
+ </div>
