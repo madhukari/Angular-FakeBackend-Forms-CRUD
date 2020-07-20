@@ -2,11 +2,26 @@
     <h1>Hi {{currentUser.firstName}}!</h1>
     <p>You're logged in with Fake Service !!</p>
     <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.email}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
+    <table class="table table-striped">
+        <th>id</th>
+        <th>
+            FistName
+        </th>
+        <th>
+           LastName
+        </th>
+        <th>
+            Gender
+        </th>
+        <tbody *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.gender}}</td>
+        </tbody>
+        
+    </table>
+
+   
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
