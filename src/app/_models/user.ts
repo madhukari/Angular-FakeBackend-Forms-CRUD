@@ -6,5 +6,5 @@ export class User {
     mobileNumber:number;
     firstName: string;
     lastName: string;
-    gender:boolean;
+    gender:string;
 }
