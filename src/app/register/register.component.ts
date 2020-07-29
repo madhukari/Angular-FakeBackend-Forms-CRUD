@@ -35,7 +35,7 @@ export class RegisterComponent {
                 });
                 }
                 else{
-                alert("please enter valid data")
+            //   con
                 }
     }
     
