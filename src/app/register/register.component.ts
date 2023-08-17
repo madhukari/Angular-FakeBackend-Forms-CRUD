@@ -43,7 +43,7 @@ export class RegisterComponent {
       doValidate(model:any)
     {
         var mail ="@"  
-        if (this.model.lastName.match("@"))
+        if (this.model.username.match("@"))
         {
         return true;
         }

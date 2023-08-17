@@ -15,6 +15,7 @@ import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
+import { ManagerComponent } from './manager/manager.component';
 import { RegisterComponent } from './register/index';
 import { MatchPasswordDirective } from './directives/validatepassword.directive';
 import {CustomvalidationService } from '../app/directives/customvalidaionService';
@@ -32,8 +33,9 @@ import {CustomvalidationService } from '../app/directives/customvalidaionService
         AlertComponent,
         HomeComponent,
         LoginComponent,
+        ManagerComponent,
         RegisterComponent,
-        MatchPasswordDirective
+        MatchPasswordDirective,
     ],
     providers: [
         AuthGuard,
