@@ -35,7 +35,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         email: user.email,
                         firstName: user.firstName,
                         lastName: user.lastName,
-                        token: 'fake-jwt-token'
+                        token: 'fake-jwt-token',
+                        userType: user.employeeType
                     };
 
                     return Observable.of(new HttpResponse({ status: 200, body: body }));

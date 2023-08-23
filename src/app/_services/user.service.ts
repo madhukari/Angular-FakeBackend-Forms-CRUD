@@ -7,10 +7,34 @@ const environment = {
   
 
 import { User } from '../_models/index';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+        private router: Router,
+        ) { }
+    private myBehaviorSubject = new BehaviorSubject<string>('default value');
+
+    setterGetter(type,value = ''){//type 1 means getter 2 means setter
+        console.log('model=',value);
+    //   return  type == 1 ?  this.myBehaviorSubject.asObservable() : this.myBehaviorSubject.next(value);
+        if(type == 1){
+            console.log('getter=',value);
+           return this.myBehaviorSubject.asObservable();
+        }else{
+         console.log('setter=',value);
+         this.myBehaviorSubject.next(value);
+         alert('request submitted successfully');
+         if(value['employeeType'] == "consultant" || value['employeeType'] == "user"){
+            this.router.navigate(['/user']);
+        }else{
+            // this.router.navigate([this.returnUrl]);
+        }
+
+        }
+    }
 
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/api/users`);

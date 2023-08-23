@@ -19,6 +19,8 @@ import { ManagerComponent } from './manager/manager.component';
 import { RegisterComponent } from './register/index';
 import { MatchPasswordDirective } from './directives/validatepassword.directive';
 import {CustomvalidationService } from '../app/directives/customvalidaionService';
+import { LeaveRequestComponent } from './leaveRequest/leaverequest.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import {CustomvalidationService } from '../app/directives/customvalidaionService
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        CommonModule,
         routing
     ],
     declarations: [
@@ -36,6 +39,7 @@ import {CustomvalidationService } from '../app/directives/customvalidaionService
         ManagerComponent,
         RegisterComponent,
         MatchPasswordDirective,
+        LeaveRequestComponent
     ],
     providers: [
         AuthGuard,

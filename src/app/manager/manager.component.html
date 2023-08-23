@@ -4,3 +4,6 @@
    
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
+<p *ngIf="leaves._value != 'default value'">
+    {{leaves | json}}
+</p>

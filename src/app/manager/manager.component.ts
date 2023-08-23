@@ -11,6 +11,7 @@ import { UserService } from '../_services/index';
 export class ManagerComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    leaves: any = '';
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -18,7 +19,9 @@ export class ManagerComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
+        this.leaves = this.userService.setterGetter(1)
     }
+
 
     deleteUser(id: number) {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
