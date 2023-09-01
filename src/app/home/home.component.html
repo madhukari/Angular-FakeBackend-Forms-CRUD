@@ -2,7 +2,7 @@
     <h1>Hi {{currentUser.firstName}} {{currentUser.lastName}}!</h1>
     <!-- {{currentUser | json}} -->
     <p >You're logged in as {{empName | titlecase}}  with Fake Service !!</p>
-    <p *ngIf="!empName === 'Manager'"><a [routerLink]="['/leaveRequest']">leave request</a></p>
+    <p *ngIf="empName != 'Manager'"><a [routerLink]="['/leaveRequest']">leave request</a></p>
     {{leaves._value | json}}
     <h3>All registered users:</h3>
     <table class="table table-striped">
