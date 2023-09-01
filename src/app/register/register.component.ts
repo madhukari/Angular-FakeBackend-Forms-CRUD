@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService, UserService } from '../_services/index';
-import {User } from '../_models/user';
+import {User,LeaveObject } from '../_models/user';
 
 @Component({
     templateUrl: 'register.component.html'
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
     model: any = {};
     loading = false;
     User:any={};
@@ -17,12 +17,17 @@ export class RegisterComponent {
         private userService: UserService,
         private alertService: AlertService) { }
 
+        ngOnInit(){
+            this.model.employeeType = 'default';
+        }
+
          
     register() {
         console.log("register");
         if( this.doValidate(this.User)== true){
         this.loading = true;
         console.log(this.model);
+        this.model['LeaveObject'] = new LeaveObject;
         this.userService.create(this.model)
             .subscribe(
                 data => {

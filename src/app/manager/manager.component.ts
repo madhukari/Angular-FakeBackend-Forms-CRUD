@@ -19,7 +19,8 @@ export class ManagerComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
-        this.leaves = this.userService.setterGetter(1)
+        this.leaves = this.userService.setterGetter(1).subscribe(res=> {return res})
+        console.log('this.leaves=',this.leaves)
     }
 
 

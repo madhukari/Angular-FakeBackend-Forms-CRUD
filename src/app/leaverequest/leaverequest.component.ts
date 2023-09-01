@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { LeaveObject } from '../_models/user';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
 
 @Component({
@@ -11,7 +11,7 @@ export class LeaveRequestComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
-
+    users=[];
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -22,10 +22,17 @@ export class LeaveRequestComponent implements OnInit {
     ngOnInit() {
         this.model.leaveType = "default"; 
         this.model.employeeType = "default"; 
+        this.userService.getAll().subscribe(users => { this.users = users; });
     }
 
     leaveRequest() {
         console.log('CMPmodel',this.model);
-        this.userService.setterGetter(2,this.model)
+        this.userService.setterGetter(2,this.model);
+        let uu = JSON.parse(localStorage.getItem('currentUser'));
+        let currentUser = this.users.find(item => item.id == uu.id);
+        currentUser['LeaveObject'] = this.model;
+        currentUser.id = currentUser.id-1;
+        this.userService.update(currentUser).subscribe(res=> console.log(res));
+        this.router.navigate['/user'];     
     }
 }

@@ -8,4 +8,11 @@ export class User {
     lastName: string;
     gender:string;
     employeeType: string;
+    LeaveObject:LeaveObject;
+}
+export class LeaveObject {
+    userName: string;
+    dob:string;
+    employeeType:string;
+    leaveType:string;
 }
