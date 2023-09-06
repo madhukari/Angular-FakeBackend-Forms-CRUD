@@ -1,9 +1,9 @@
 export class User {
-    id: number;
+    id: any;
     username: string;
     password: string;
     confirmPassword:string;
-    mobileNumber:number;
+    mobileNumber:any;
     firstName: string;
     lastName: string;
     gender:string;
