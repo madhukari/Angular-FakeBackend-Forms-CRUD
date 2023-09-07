@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const environment = {
-    apiUrl: 'https://jsonplaceholder.typicode.com'
+    apiUrl: 'https://jsonplaceholder.typicode.com',
+    jsonUrl: 'http://localhost:3000/comments'
   };
   
 
@@ -17,25 +18,7 @@ export class UserService {
         ) { }
     private myBehaviorSubject = new BehaviorSubject<string>('default value');
 
-    setterGetter(type,value = ''){//type 1 means getter 2 means setter
-        console.log('model=',value);
-    //   return  type == 1 ?  this.myBehaviorSubject.asObservable() : this.myBehaviorSubject.next(value);
-        if(type == 1){
-            console.log('getter=',value);
-           return this.myBehaviorSubject.asObservable();
-        }else{
-         console.log('setter=',value);
-         this.myBehaviorSubject.next(value);
-         alert('request submitted successfully');
-         if(value['employeeType'] == "consultant" || value['employeeType'] == "user"){
-            this.router.navigate(['/user']);
-        }else{
-            // this.router.navigate([this.returnUrl]);
-        }
-
-        }
-    }
-
+    
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/api/users`);
     }
@@ -51,6 +34,14 @@ export class UserService {
     update(user: User) {
         return this.http.put(`${environment.apiUrl}/api/users/` + user.id, user);
     }
+
+    updateUserJson(user: User) {
+        return this.http.post(`${environment.jsonUrl}`, user);
+    }
+    getLeavesByJson() {
+        return this.http.get(`${environment.jsonUrl}`);
+    }
+
 
     delete(id: number) {
         return this.http.delete(`${environment.apiUrl}/api/users/` + id);

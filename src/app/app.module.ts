@@ -2,7 +2,6 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
 
@@ -29,8 +28,7 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         HttpClientModule,
         CommonModule,
-        routing,
-        InMemoryWebApiModule.forRoot(Data)
+        routing
     ],
     declarations: [
         AppComponent,

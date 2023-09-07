@@ -19,8 +19,7 @@ export class ManagerComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
-        this.leaves = this.userService.setterGetter(1).subscribe(res=> {return res})
-        console.log('this.leaves=',this.leaves)
+        this.userService.getLeavesByJson().subscribe(res=> {this.leaves =  res})
     }
 
 
@@ -30,5 +29,12 @@ export class ManagerComponent implements OnInit {
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+    approveLeave(leave,type){
+        if(type == 1){
+            this.leaves.find(item => item.LeaveObject?.userName == leave.LeaveObject?.userName)["status"]="approved";
+        }else{
+            this.leaves.find(item => item.LeaveObject?.userName == leave.LeaveObject?.userName)["status"]="rejected";
+        } 
     }
 }

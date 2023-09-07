@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
-        this.leaves = this.userService.setterGetter(1)
+        this.userService.getLeavesByJson().subscribe(res=> {
+            this.leaves =  res;
+        })
         this.empName = this.currentUser.employeeType || this.currentUser['userType']
     }
 

@@ -32,7 +32,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = filteredUsers[0];
                     let body = {
                         id: user.id,
-                        email: user.email,
+                        username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         token: 'fake-jwt-token',

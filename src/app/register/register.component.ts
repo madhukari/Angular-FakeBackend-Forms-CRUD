@@ -23,10 +23,8 @@ export class RegisterComponent implements OnInit{
 
          
     register() {
-        console.log("register");
         if( this.doValidate(this.User)== true){
         this.loading = true;
-        console.log(this.model);
         this.model['LeaveObject'] = new LeaveObject;
         this.userService.create(this.model)
             .subscribe(
@@ -55,7 +53,6 @@ export class RegisterComponent implements OnInit{
         else{
         alert("Please put the correct email address");
         }
-        console.log("valid");
         if(this.model.password !== this.model.confirmPassword){
             alert("Password and Confirm password should be same");
             return false;

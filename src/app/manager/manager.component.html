@@ -1,10 +1,30 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-12 ">
     <h1>Hi {{currentUser.firstName}}!</h1>
     <p>You're logged in as manager with Fake Service !!</p>
    
     <p><a [routerLink]="['/login']">Logout</a></p>
+    <h5>leaves list</h5>
+  
+
+<table class="table" *ngIf="leaves._value != 'default value'">
+    <thead>
+      <tr>
+        <th>leaveType</th>
+        <th>employeeType</th>
+        <th>userName</th>
+        <th>dob</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leave of leaves" >
+        <td>{{leave.LeaveObject?.leaveType}}</td>
+        <td>{{leave.LeaveObject?.employeeType}}</td>
+        <td>{{leave.LeaveObject?.userName}}</td>
+        <td>{{leave.LeaveObject?.dob}}</td>
+        <td *ngIf="leave.status == null"><button class="btn-primary" (click)="approveLeave(leave,1)">Approve Leave</button><button class="btn-primary" (click)="approveLeave(leave,2)">Reject Leave</button></td>
+        <td *ngIf="leave.status != null">{{leave.status}}</td>
+
+      </tr>
+    </tbody>
+  </table>
 </div>
-<p *ngIf="leaves._value != 'default value'">
-    <span>leaves list</span>
-    {{leaves | json}}
-</p>

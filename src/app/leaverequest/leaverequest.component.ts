@@ -26,13 +26,11 @@ export class LeaveRequestComponent implements OnInit {
     }
 
     leaveRequest() {
-        console.log('CMPmodel',this.model);
-        this.userService.setterGetter(2,this.model);
         let uu = JSON.parse(localStorage.getItem('currentUser'));
         let currentUser = this.users.find(item => item.id == uu.id);
         currentUser['LeaveObject'] = this.model;
         currentUser.id = currentUser.id-1;
-        this.userService.update(currentUser).subscribe(res=> console.log(res));
+        this.userService.updateUserJson(currentUser).subscribe(res=> console.log(res));
         this.router.navigate['/user'];     
     }
 }
